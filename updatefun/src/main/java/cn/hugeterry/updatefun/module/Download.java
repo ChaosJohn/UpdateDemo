@@ -20,6 +20,7 @@ import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
+import cn.hugeterry.updatefun.R;
 import cn.hugeterry.updatefun.config.DownloadKey;
 import cn.hugeterry.updatefun.config.UpdateKey;
 import cn.hugeterry.updatefun.utils.GetAppInfo;
@@ -44,6 +45,8 @@ public class Download extends Thread {
 
     private Context context;
     private static File apkFile;
+
+    private static String TAG = "fir.im.update";
 
     public Download(Context context) {
         this.context = context;
@@ -83,7 +86,7 @@ public class Download extends Thread {
                         ((DownLoadDialog) context).textView.setText(progress + "%");
                     } else if (UpdateKey.DialogOrNotification == 2) {
                         builder.setProgress(length, count, false)
-                                .setContentText("下载进度:" + progress + "%");
+                                .setContentText(context.getString(R.string.download_progress) + progress + "%");
                         notificationManager.notify(1115, builder.build());
                     }
                     break;
@@ -91,7 +94,7 @@ public class Download extends Thread {
                     if (UpdateKey.DialogOrNotification == 1) {
                         ((DownLoadDialog) context).finish();
                     } else if (UpdateKey.DialogOrNotification == 2) {
-                        builder.setTicker("下载完成");
+                        builder.setTicker(context.getString(R.string.download_complete));
                         notificationManager.notify(1115, builder.build());
                         notificationManager.cancel(1115);
                     }
@@ -102,7 +105,7 @@ public class Download extends Thread {
                         DownloadKey.LoadManual = false;
                     }
                     if (checkApk(context)) {
-                        Log.i("UpdateFun TAG", "APK路径:" + apkFile);
+                        Log.i(TAG, "APK: " + apkFile);
                         InstallApk.startInstall(context, apkFile);
                     }
                     break;
@@ -122,8 +125,7 @@ public class Download extends Thread {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        Log.i("UpdateFun TAG",
-                String.format("ApkDownloadUrl:%s", DownloadKey.apkUrl));
+        Log.i(TAG, String.format("ApkDownloadUrl:%s", DownloadKey.apkUrl));
         try {
             conn = (HttpURLConnection) url.openConnection();
             conn.connect();
@@ -183,7 +185,7 @@ public class Download extends Thread {
             conn.disconnect();
 
             if (DownloadKey.interceptFlag) {
-                Log.i("UpdateFun TAG", "interrupt");
+                Log.i(TAG, "interrupt");
                 length = 0;
                 count = 0;
                 DownloadKey.interceptFlag = false;
@@ -198,12 +200,11 @@ public class Download extends Thread {
         String apkName = GetAppInfo.getAPKPackageName(context, apkFile.toString());
         String appName = GetAppInfo.getAppPackageName(context);
         if (apkName.equals(appName)) {
-            Log.i("UpdateFun TAG", "apk检验:包名相同,安装apk");
+            Log.i(TAG, context.getString(R.string.apk_check_success_log));
             return true;
         } else {
-            Log.i("UpdateFun TAG",
-                    String.format("apk检验:包名不同。该app包名:%s，apk包名:%s", appName, apkName));
-            Toast.makeText(context, "apk检验:包名不同,不进行安装,原因可能是运营商劫持", Toast.LENGTH_LONG).show();
+            Log.i(TAG, String.format(context.getString(R.string.apk_check_fail_log), appName, apkName));
+            Toast.makeText(context, context.getString(R.string.apk_check_fail_toast), Toast.LENGTH_LONG).show();
             return false;
         }
     }

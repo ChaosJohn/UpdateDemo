@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
 
+import cn.hugeterry.updatefun.R;
 import cn.hugeterry.updatefun.config.DownloadKey;
 import cn.hugeterry.updatefun.utils.GetAppInfo;
 import cn.hugeterry.updatefun.view.UpdateDialog;
@@ -22,8 +23,11 @@ public class HandleUpdateResult implements Runnable {
 
     private String version = "";
     private Up_handler up_handler;
+    private static String TAG = "fir.im.update";
+    private Context context;
 
     public HandleUpdateResult(Context context) {
+        this.context = context;
         up_handler = new Up_handler(context);
         this.version = GetAppInfo.getAppVersionName(context);
     }
@@ -46,13 +50,13 @@ public class HandleUpdateResult implements Runnable {
                     case 2:
                         if (DownloadKey.ISManual) {
                             DownloadKey.LoadManual = false;
-                            Toast.makeText(context, "网络不畅通", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, context.getString(R.string.network_unstable), Toast.LENGTH_LONG).show();
                         }
                         break;
                     case 3:
                         if (DownloadKey.ISManual) {
                             DownloadKey.LoadManual = false;
-                            Toast.makeText(context, "版本已是最新", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, context.getString(R.string.already_latest_version), Toast.LENGTH_LONG).show();
                         }
                         break;
                     default:
@@ -76,15 +80,15 @@ public class HandleUpdateResult implements Runnable {
         }
 
         if (DownloadKey.version == null) {
-            Log.i("UpdateFun TAG", "获取的应用信息为空，不更新，请确认网络是否畅通或者应用ID及API_TOKEN是否正确");
+            Log.i(TAG, context.getString(R.string.update_info_error));
             msg.arg1 = 2;
             up_handler.sendMessage(msg);
         } else if (!DownloadKey.version.equals(version)) {
-            Log.i("UpdateFun TAG", "需更新版本");
+            Log.i(TAG, context.getString(R.string.update_available));
             msg.arg1 = 1;
             up_handler.sendMessage(msg);
         } else {
-            Log.i("UpdateFun TAG", "版本已是最新");
+            Log.i(TAG, context.getString(R.string.already_latest_version));
             msg.arg1 = 3;
             up_handler.sendMessage(msg);
         }

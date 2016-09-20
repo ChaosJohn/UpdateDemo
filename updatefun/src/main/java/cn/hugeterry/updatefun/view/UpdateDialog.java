@@ -31,7 +31,7 @@ public class UpdateDialog extends Activity {
         no = (TextView) findViewById(R.id.updatedialog_no);
         tv_changelog = (TextView) findViewById(R.id.updatedialog_text_changelog);
 
-        tv_changelog.setText("更新日志：\n" + DownloadKey.changeLog);
+        tv_changelog.setText(getString(R.string.update_changelog) + "：\n" + DownloadKey.changeLog);
 
         yes.setOnClickListener(new OnClickListener() {
 
