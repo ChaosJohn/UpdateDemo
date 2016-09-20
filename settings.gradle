@@ -1,1 +1,1 @@
-include ':sample', ':updatefun'
+include ':sample', ':fir.im.update'
