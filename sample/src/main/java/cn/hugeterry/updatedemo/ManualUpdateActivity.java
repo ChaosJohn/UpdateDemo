@@ -46,7 +46,7 @@ public class ManualUpdateActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_white_24dp);
-        getSupportActionBar().setTitle("关于");
+        getSupportActionBar().setTitle(getString(R.string.about));
     }
 
     @Override
