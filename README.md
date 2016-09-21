@@ -1,6 +1,6 @@
-# UpdateFun更新库
+# fir.im.update更新库
 
-UpdateFun是一个[fir.im](http://fir.im/)的Android更新下载模块，在[fir.im](http://fir.im/)上上传自己的APP后接入该库即可实现检查更新下载
+fir.im.update是一个[fir.im](http://fir.im/)的Android更新下载模块，在[fir.im](http://fir.im/)上上传自己的APP后接入该库即可实现检查更新下载
 
 <img src="showUI/1.png" height="400"/>
 <img src="showUI/2.png" height="400"/>
@@ -11,23 +11,22 @@ UpdateFun是一个[fir.im](http://fir.im/)的Android更新下载模块，在[fir
 
 ###Step 1
 
+在根gradle文件中加入
+```
+allprojects {
+		repositories {
+			...
+			maven { url "https://jitpack.io" }
+		}
+	}
+```
+
 在gradle文件中加入下面的依赖:
 
 ```
 dependencies {
-    compile 'cn.hugeterry.updatefun:updatefun:1.8.4'
+    compile 'com.github.ChaosJohn:fir.im.update:xxx' //xxx表示release版本
 }
-```
-
-如果你使用Maven，那么加入下面的依赖：
-
-```
-<dependency>
-  <groupId>cn.hugeterry.updatefun</groupId>
-  <artifactId>updatefun</artifactId>
-  <version>1.8.4</version>
-  <type>pom</type>
-</dependency>
 ```
 
 ###Step 2
