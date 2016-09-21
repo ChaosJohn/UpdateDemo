@@ -21,7 +21,8 @@ import com.chaosjohn.fir_im_update.view.UpdateDialog;
  */
 public class HandleUpdateResult implements Runnable {
 
-    private String version = "";
+    private String versionShort = "";
+    private int versionCode;
     private Up_handler up_handler;
     private static String TAG = "fir.im.update";
     private Context context;
@@ -29,7 +30,8 @@ public class HandleUpdateResult implements Runnable {
     public HandleUpdateResult(Context context) {
         this.context = context;
         up_handler = new Up_handler(context);
-        this.version = GetAppInfo.getAppVersionName(context);
+        this.versionShort = GetAppInfo.getAppVersionName(context);
+        this.versionCode = GetAppInfo.getAppVersionCode(context);
     }
 
     private static class Up_handler extends Handler {
@@ -45,7 +47,7 @@ public class HandleUpdateResult implements Runnable {
             if (context != null) {
                 switch (msg.arg1) {
                     case 1:
-                        showNoticeDialog(context);
+                        showNoticeDialog(context, false);
                         break;
                     case 2:
                         if (DownloadKey.ISManual) {
@@ -58,6 +60,10 @@ public class HandleUpdateResult implements Runnable {
                             DownloadKey.LoadManual = false;
                             Toast.makeText(context, context.getString(R.string.already_latest_version), Toast.LENGTH_LONG).show();
                         }
+                        break;
+
+                    case 4:
+                        showNoticeDialog(context, true);
                         break;
                     default:
                         break;
@@ -79,13 +85,16 @@ public class HandleUpdateResult implements Runnable {
             e.printStackTrace();
         }
 
-        if (DownloadKey.version == null) {
+        if (DownloadKey.versionShort == null) {
             Log.i(TAG, context.getString(R.string.update_info_error));
             msg.arg1 = 2;
             up_handler.sendMessage(msg);
-        } else if (!DownloadKey.version.equals(version)) {
+        } else if (!DownloadKey.versionShort.equals(versionShort)) {
             Log.i(TAG, context.getString(R.string.update_available));
             msg.arg1 = 1;
+            if (null != DownloadKey.changelogInfo &&
+                    versionCode < DownloadKey.changelogInfo.threshold)
+                msg.arg1 = 4;
             up_handler.sendMessage(msg);
         } else {
             Log.i(TAG, context.getString(R.string.already_latest_version));
@@ -94,9 +103,10 @@ public class HandleUpdateResult implements Runnable {
         }
     }
 
-    public static void showNoticeDialog(Context context) {
+    public static void showNoticeDialog(Context context, boolean hideCancel) {
         Intent intent = new Intent();
         intent.setClass(context, UpdateDialog.class);
+        intent.putExtra("hideCancel", hideCancel);
         ((Activity) context).startActivityForResult(intent, 100);
     }
 

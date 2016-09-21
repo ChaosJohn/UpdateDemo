@@ -117,15 +117,25 @@ public class Download extends Thread {
     }
 
     public void run() {
+        File file = StorageUtils.getCacheDirectory(context);
+        if (!file.exists()) {
+            file.mkdir();
+        }
+
+        apkFile = new File(file, DownloadKey.saveFileName);
+        if (DownloadKey.downloaded) {
+            handler.sendEmptyMessage(DOWN_OVER);
+            return;
+        }
         URL url = null;
         HttpURLConnection conn = null;
         InputStream is = null;
         try {
-            url = new URL(DownloadKey.apkUrl);
+            url = new URL(DownloadKey.installUrl);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        Log.i(TAG, String.format("ApkDownloadUrl:%s", DownloadKey.apkUrl));
+        Log.i(TAG, String.format("ApkDownloadUrl:%s", DownloadKey.installUrl));
         try {
             conn = (HttpURLConnection) url.openConnection();
             conn.connect();
@@ -153,12 +163,6 @@ public class Download extends Thread {
 
 
         try {
-            File file = StorageUtils.getCacheDirectory(context);
-            if (!file.exists()) {
-                file.mkdir();
-            }
-
-            apkFile = new File(file, DownloadKey.saveFileName);
             FileOutputStream fos = new FileOutputStream(apkFile);
             long tempFileLength = file.length();
             byte buf[] = new byte[1024];

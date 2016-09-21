@@ -42,6 +42,18 @@ public class GetAppInfo {
         return versionName;
     }
 
+    public static int getAppVersionCode(Context context) {
+        int versionCode = -1;
+        try {
+            PackageInfo pi = context.getPackageManager()
+                    .getPackageInfo(context.getPackageName(), 0);
+            versionCode = pi.versionCode;
+        } catch (Exception e) {
+            Log.e("VersionInfo", "Exception", e);
+        }
+        return versionCode;
+    }
+
     public static String getAppPackageName(Context context) {
         return context.getPackageName();
     }

@@ -18,4 +18,5 @@
     <string name="updating_now">正在更新,请稍等</string>
     <string name="start_downloading">开始下载</string>
     <string name="updating">正在更新</string>
+    <string name="lang">cn</string>
 </resources>

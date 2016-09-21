@@ -18,4 +18,5 @@
     <string name="updating_now">Updating now, please wait</string>
     <string name="start_downloading">Start downloading</string>
     <string name="updating">Updating</string>
+    <string name="lang">en</string>
 </resources>

@@ -14,8 +14,21 @@ public class DownloadKey {
     public static int TOShowDownloadView = 0;
     //    public static final String savePath = Environment.getExternalStorageDirectory() + "/UpdateFun/";
     public static String saveFileName = "newversion.apk";
-    public static String apkUrl = "";
+    public static String name;
+    public static String installUrl = "";
     public static String changeLog = "";
+    public static String versionShort;
+//    public static String build;
     public static String version;
+    public static String updated_at = "";
+    public static ChangelogInfo changelogInfo;
     public static boolean interceptFlag = false;
+    public static boolean downloaded = false;
+    public static long fsize;
+
+    public static class ChangelogInfo {
+        public int threshold = -1;
+        public String cn = "";
+        public String en = "";
+    }
 }

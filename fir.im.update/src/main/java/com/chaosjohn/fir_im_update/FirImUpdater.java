@@ -58,8 +58,7 @@ public class FirImUpdater {
     }
 
     public static void showDownloadView(Context context) {
-        DownloadKey.saveFileName =
-                GetAppInfo.getAppPackageName(context) + ".apk";
+//        DownloadKey.saveFileName = GetAppInfo.getAppPackageName(context) + ".apk";
         if (UpdateKey.DialogOrNotification == 1) {
             Intent intent = new Intent();
             intent.setClass(context, DownLoadDialog.class);

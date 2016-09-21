@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.chaosjohn.fir_im_update.R;
 import com.chaosjohn.fir_im_update.config.DownloadKey;
+import com.chaosjohn.fir_im_update.module.Download;
 
 /**
  * Created by hugeterry(http://hugeterry.cn)
@@ -32,7 +33,26 @@ public class UpdateDialog extends Activity {
         no = (TextView) findViewById(R.id.updatedialog_no);
         tv_changelog = (TextView) findViewById(R.id.updatedialog_text_changelog);
 
-        tv_changelog.setText(getString(R.string.update_changelog) + "：\n" + DownloadKey.changeLog);
+        if (getIntent().getBooleanExtra("hideCancel", false)) {
+            no.setVisibility(View.GONE);
+        }
+
+        String changelog = getString(R.string.update_changelog) + "：\n";
+        if (null != DownloadKey.changelogInfo) {
+            switch (getString(R.string.lang)) {
+                case "en": {
+                    changelog += DownloadKey.changelogInfo.en;
+                    break;
+                }
+                case "cn": {
+                    changelog += DownloadKey.changelogInfo.cn;
+                    break;
+                }
+            }
+        } else {
+            changelog += DownloadKey.changeLog;
+        }
+        tv_changelog.setText(changelog);
 
         yes.setOnClickListener(new OnClickListener() {
 
