@@ -16,4 +16,6 @@
     <string name="update_info_error">Empty app info, so skip update. Please ensure that network is stable or APPID/APPTOKEN is valid</string>
     <string name="update_changelog">Update Changelog</string>
     <string name="updating_now">Updating now, please wait</string>
+    <string name="start_downloading">Start downloading</string>
+    <string name="updating">Updating</string>
 </resources>

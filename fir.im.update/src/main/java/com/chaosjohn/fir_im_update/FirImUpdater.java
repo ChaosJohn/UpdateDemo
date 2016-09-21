@@ -77,9 +77,9 @@ public class FirImUpdater {
 
         Notification.Builder builder = new Notification.Builder(context);
         builder.setSmallIcon(android.R.drawable.stat_sys_download)
-                .setTicker("开始下载")
+                .setTicker(context.getString(R.string.start_downloading))
                 .setContentTitle(GetAppInfo.getAppName(context))
-                .setContentText("正在更新")
+                .setContentText(context.getString(R.string.updating))
                 .setContentIntent(pIntent)
                 .setWhen(System.currentTimeMillis());
         return builder;
