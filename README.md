@@ -39,7 +39,7 @@ UpdateKey.APP_ID = "写上APP的应用ID";
 //下载方式:
 //UpdateKey.DialogOrNotification=UpdateKey.WITH_DIALOG;通过Dialog来进行下载
 //UpdateKey.DialogOrNotification=UpdateKey.WITH_NOTIFITION;通过通知栏来进行下载(默认)
-UpdateFunGO.init(this);
+FirImUpdater.init(this);
 ```
 
 ###Step 3
@@ -50,12 +50,12 @@ UpdateFunGO.init(this);
  @Override
     protected void onResume() {
         super.onResume();
-        UpdateFunGO.onResume(this);
+        FirImUpdater.onResume(this);
     }
   @Override
      protected void onStop() {
          super.onStop();
-         UpdateFunGO.onStop(this);
+         FirImUpdater.onStop(this);
      }
 ```
 
@@ -70,19 +70,19 @@ UpdateFunGO.init(this);
 
 在需要手动更新时调用:
 ```
-UpdateFunGO.manualStart(this);
+FirImUpdater.manualStart(this);
 ```
 并在手动更新的当前Activity添加上以下代码：
 ```
  @Override
     protected void onResume() {
         super.onResume();
-        UpdateFunGO.onResume(this);
+        FirImUpdater.onResume(this);
     }
   @Override
      protected void onStop() {
          super.onStop();
-         UpdateFunGO.onStop(this);
+         FirImUpdater.onStop(this);
      }
 ```
 即可实现手动更新
