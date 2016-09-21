@@ -1,4 +1,4 @@
-package cn.hugeterry.updatefun.config;
+package com.chaosjohn.fir_im_update.config;
 
 /**
  * Created by hugeterry(http://hugeterry.cn)

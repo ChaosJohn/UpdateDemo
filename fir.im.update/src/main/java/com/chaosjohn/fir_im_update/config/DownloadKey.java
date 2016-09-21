@@ -1,7 +1,6 @@
-package cn.hugeterry.updatefun.config;
+package com.chaosjohn.fir_im_update.config;
 
 import android.content.Context;
-import android.os.Environment;
 
 /**
  * Created by hugeterry(http://hugeterry.cn)

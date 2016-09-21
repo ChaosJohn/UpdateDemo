@@ -15,4 +15,5 @@
     <string name="already_latest_version">Already Latest Version</string>
     <string name="update_info_error">Empty app info, so skip update. Please ensure that network is stable or APPID/APPTOKEN is valid</string>
     <string name="update_changelog">Update Changelog</string>
+    <string name="updating_now">Updating now, please wait</string>
 </resources>

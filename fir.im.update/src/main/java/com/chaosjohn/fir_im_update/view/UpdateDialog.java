@@ -1,4 +1,4 @@
-package cn.hugeterry.updatefun.view;
+package com.chaosjohn.fir_im_update.view;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-import cn.hugeterry.updatefun.config.DownloadKey;
-import cn.hugeterry.updatefun.R;
+import com.chaosjohn.fir_im_update.R;
+import com.chaosjohn.fir_im_update.config.DownloadKey;
 
 /**
  * Created by hugeterry(http://hugeterry.cn)
@@ -58,6 +58,4 @@ public class UpdateDialog extends Activity {
             }
         });
     }
-
-
 }

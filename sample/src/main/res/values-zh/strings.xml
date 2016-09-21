@@ -1,4 +1,6 @@
 <resources>
-    <string name="app_name">UpdateDemo</string>
+    <string name="app_name">fir.im.update.sample</string>
     <string name="about">关于</string>
+    <string name="manual_update">手动更新界面</string>
+    <string name="check_for_update">检查更新</string>
 </resources>

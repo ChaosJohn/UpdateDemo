@@ -15,4 +15,5 @@
     <string name="already_latest_version">版本已是最新</string>
     <string name="update_info_error">获取的应用信息为空，不更新，请确认网络是否畅通或者应用ID及API_TOKEN是否正确</string>
     <string name="update_changelog">更新日志</string>
+    <string name="updating_now">正在更新,请稍等</string>
 </resources>

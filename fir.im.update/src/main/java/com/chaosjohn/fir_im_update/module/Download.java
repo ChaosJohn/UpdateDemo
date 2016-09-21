@@ -1,4 +1,4 @@
-package cn.hugeterry.updatefun.module;
+package com.chaosjohn.fir_im_update.module;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,13 +20,13 @@ import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
-import cn.hugeterry.updatefun.R;
-import cn.hugeterry.updatefun.config.DownloadKey;
-import cn.hugeterry.updatefun.config.UpdateKey;
-import cn.hugeterry.updatefun.utils.GetAppInfo;
-import cn.hugeterry.updatefun.utils.InstallApk;
-import cn.hugeterry.updatefun.utils.StorageUtils;
-import cn.hugeterry.updatefun.view.DownLoadDialog;
+import com.chaosjohn.fir_im_update.R;
+import com.chaosjohn.fir_im_update.config.DownloadKey;
+import com.chaosjohn.fir_im_update.config.UpdateKey;
+import com.chaosjohn.fir_im_update.utils.GetAppInfo;
+import com.chaosjohn.fir_im_update.utils.InstallApk;
+import com.chaosjohn.fir_im_update.utils.StorageUtils;
+import com.chaosjohn.fir_im_update.view.DownLoadDialog;
 
 /**
  * Created by hugeterry(http://hugeterry.cn)

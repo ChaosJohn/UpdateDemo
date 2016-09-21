@@ -1,4 +1,4 @@
-package cn.hugeterry.updatefun.utils;
+package com.chaosjohn.fir_im_update.utils;
 
 import android.content.Context;
 import android.content.Intent;

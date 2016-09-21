@@ -1,4 +1,4 @@
-package cn.hugeterry.updatefun.module;
+package com.chaosjohn.fir_im_update.module;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,10 +10,10 @@ import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
 
-import cn.hugeterry.updatefun.R;
-import cn.hugeterry.updatefun.config.DownloadKey;
-import cn.hugeterry.updatefun.utils.GetAppInfo;
-import cn.hugeterry.updatefun.view.UpdateDialog;
+import com.chaosjohn.fir_im_update.R;
+import com.chaosjohn.fir_im_update.config.DownloadKey;
+import com.chaosjohn.fir_im_update.utils.GetAppInfo;
+import com.chaosjohn.fir_im_update.view.UpdateDialog;
 
 /**
  * Created by hugeterry(http://hugeterry.cn)

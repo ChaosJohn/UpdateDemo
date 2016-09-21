@@ -1,4 +1,4 @@
-package cn.hugeterry.updatefun.module;
+package com.chaosjohn.fir_im_update.module;
 
 import android.util.Log;
 
@@ -12,8 +12,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import cn.hugeterry.updatefun.config.DownloadKey;
-import cn.hugeterry.updatefun.config.UpdateKey;
+import com.chaosjohn.fir_im_update.config.DownloadKey;
+import com.chaosjohn.fir_im_update.config.UpdateKey;
 
 /**
  * Created by hugeterry(http://hugeterry.cn)

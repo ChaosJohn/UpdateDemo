@@ -1,4 +1,4 @@
-package cn.hugeterry.updatefun;
+package com.chaosjohn.fir_im_update;
 
 import android.app.Activity;
 import android.app.Notification;
@@ -7,52 +7,54 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-import cn.hugeterry.updatefun.config.DownloadKey;
-import cn.hugeterry.updatefun.config.UpdateKey;
-import cn.hugeterry.updatefun.module.Download;
-import cn.hugeterry.updatefun.module.HandleUpdateResult;
-import cn.hugeterry.updatefun.view.DownLoadDialog;
-import cn.hugeterry.updatefun.utils.GetAppInfo;
+import com.chaosjohn.fir_im_update.config.DownloadKey;
+import com.chaosjohn.fir_im_update.config.UpdateKey;
+import com.chaosjohn.fir_im_update.module.Download;
+import com.chaosjohn.fir_im_update.module.HandleUpdateResult;
+import com.chaosjohn.fir_im_update.utils.GetAppInfo;
+import com.chaosjohn.fir_im_update.view.DownLoadDialog;
+
 
 /**
  * Created by hugeterry(http://hugeterry.cn)
  * Date: 16/7/12 16:47
  */
-public class UpdateFunGO {
+public class FirImUpdater {
 
     private static Thread download;
     private static Thread thread_update;
 
-    private static volatile UpdateFunGO sInst = null;
+    private static volatile FirImUpdater sInst = null;
 
-    public static void manualStart(Context context) {
-        DownloadKey.ISManual = true;
-        if (!DownloadKey.LoadManual) {
-            DownloadKey.LoadManual = true;
-            new UpdateFunGO(context);
-        } else Toast.makeText(context, "正在更新中,请稍等", Toast.LENGTH_LONG).show();
-    }
-
-    public static UpdateFunGO init(Context context) {
-        UpdateFunGO inst = sInst;
-        if (inst == null) {
-            synchronized (UpdateFunGO.class) {
-                inst = sInst;
-                if (inst == null) {
-                    inst = new UpdateFunGO(context);
-                    sInst = inst;
-                }
-            }
-        }
-        return inst;
-    }
-
-    private UpdateFunGO(Context context) {
+    private FirImUpdater(Context context) {
         DownloadKey.FROMACTIVITY = context;
         if (DownloadKey.TOShowDownloadView != 2) {
             thread_update = new Thread(new HandleUpdateResult(context));
             thread_update.start();
         }
+    }
+
+    public static void manualStart(Context context) {
+        DownloadKey.ISManual = true;
+        if (!DownloadKey.LoadManual) {
+            DownloadKey.LoadManual = true;
+            new FirImUpdater(context);
+        } else
+            Toast.makeText(context, context.getString(R.string.updating_now), Toast.LENGTH_LONG).show();
+    }
+
+    public static FirImUpdater init(Context context) {
+        FirImUpdater inst = sInst;
+        if (inst == null) {
+            synchronized (FirImUpdater.class) {
+                inst = sInst;
+                if (inst == null) {
+                    inst = new FirImUpdater(context);
+                    sInst = inst;
+                }
+            }
+        }
+        return inst;
     }
 
     public static void showDownloadView(Context context) {

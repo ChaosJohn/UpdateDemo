@@ -1,4 +1,6 @@
 <resources>
-    <string name="app_name">UpdateDemo</string>
+    <string name="app_name">fir.im.update.sample</string>
     <string name="about">About</string>
+    <string name="manual_update">Manual Update</string>
+    <string name="check_for_update">Check update</string>
 </resources>

@@ -1,4 +1,4 @@
-package cn.hugeterry.updatefun.view;
+package com.chaosjohn.fir_im_update.view;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,9 +10,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import cn.hugeterry.updatefun.config.DownloadKey;
-import cn.hugeterry.updatefun.R;
-import cn.hugeterry.updatefun.module.Download;
+import com.chaosjohn.fir_im_update.R;
+import com.chaosjohn.fir_im_update.config.DownloadKey;
+import com.chaosjohn.fir_im_update.module.Download;
 
 /**
  * Created by hugeterry(http://hugeterry.cn)

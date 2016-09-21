@@ -1,12 +1,12 @@
-package cn.hugeterry.updatedemo;
+package com.chaosjohn.fir_im_update.sample;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import cn.hugeterry.updatefun.config.UpdateKey;
-import cn.hugeterry.updatefun.UpdateFunGO;
+import com.chaosjohn.fir_im_update.config.UpdateKey;
+import com.chaosjohn.fir_im_update.FirImUpdater;
 
 /**
  * Created by hugeterry(http://hugeterry.cn)
@@ -20,10 +20,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //此处填上在http://fir.im/注册账号后获得的API_TOKEN以及APP的应用ID
         UpdateKey.API_TOKEN = "";
-        UpdateKey.APP_ID = "578a11e7748aac01b7000039";
+        UpdateKey.APP_ID = "";
         //如果你想通过Dialog来进行下载，可以如下设置
 //        UpdateKey.DialogOrNotification=UpdateKey.WITH_DIALOG;
-        UpdateFunGO.init(this);
+        FirImUpdater.init(this);
     }
 
     public void toUpdateView(View view) {
@@ -35,12 +35,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        UpdateFunGO.onResume(this);
+        FirImUpdater.onResume(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        UpdateFunGO.onStop(this);
+        FirImUpdater.onStop(this);
     }
 }

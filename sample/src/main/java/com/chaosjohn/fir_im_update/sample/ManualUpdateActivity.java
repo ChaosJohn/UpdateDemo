@@ -1,4 +1,4 @@
-package cn.hugeterry.updatedemo;
+package com.chaosjohn.fir_im_update.sample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,7 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
-import cn.hugeterry.updatefun.UpdateFunGO;
+import com.chaosjohn.fir_im_update.FirImUpdater;
 
 /**
  * 手动更新界面示例
@@ -26,19 +26,19 @@ public class ManualUpdateActivity extends AppCompatActivity {
 
     public void checkUpdate(View view) {
         //手动更新onClick(),启动更新检测
-        UpdateFunGO.manualStart(this);
+        FirImUpdater.manualStart(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        UpdateFunGO.onResume(this);
+        FirImUpdater.onResume(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        UpdateFunGO.onStop(this);
+        FirImUpdater.onStop(this);
     }
 
     private void initToolbar() {
