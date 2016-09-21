@@ -63,7 +63,7 @@ UpdateFunGO.init(this);
 
 ##其他功能
 
-###手动更新（需1.8.4以上版本）[案例代码](sample/src/main/java/cn/hugeterry/updatedemo/ManualUpdateActivity.java)
+###手动更新（需1.8.4以上版本）[案例代码](sample/src/main/java/com/chaosjohn/fir_im_update/sample/ManualUpdateActivity.java)
 
 请确保在你的app已添加依赖(见用法Step 1),
 并已经写上你fir.im账号的API_TOKEN以及APP的应用ID(见用法Step 2)
