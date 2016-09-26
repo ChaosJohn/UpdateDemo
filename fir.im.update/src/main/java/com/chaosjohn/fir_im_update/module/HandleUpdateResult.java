@@ -89,7 +89,8 @@ public class HandleUpdateResult implements Runnable {
             Log.i(TAG, context.getString(R.string.update_info_error));
             msg.arg1 = 2;
             up_handler.sendMessage(msg);
-        } else if (!DownloadKey.versionShort.equals(versionShort)) {
+        } else if (!DownloadKey.versionShort.equals(versionShort) && Integer.parseInt(DownloadKey.version) >= versionCode) {
+//        } else if (!DownloadKey.versionShort.equals(versionShort)) {
             Log.i(TAG, context.getString(R.string.update_available));
             msg.arg1 = 1;
             if (null != DownloadKey.changelogInfo &&

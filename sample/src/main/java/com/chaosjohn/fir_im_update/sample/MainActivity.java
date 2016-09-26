@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //此处填上在http://fir.im/注册账号后获得的API_TOKEN以及APP的应用ID
-        UpdateKey.API_TOKEN = "";
-        UpdateKey.APP_ID = "";
+        UpdateKey.API_TOKEN = "3b11d352e83a2ddc9127df23aaca5d8c";
+        UpdateKey.APP_ID = "57e1eafc959d6904600002fc";
         //如果你想通过Dialog来进行下载，可以如下设置
 //        UpdateKey.DialogOrNotification=UpdateKey.WITH_DIALOG;
         FirImUpdater.init(this);
