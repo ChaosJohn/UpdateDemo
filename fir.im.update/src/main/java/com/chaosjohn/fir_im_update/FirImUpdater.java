@@ -21,6 +21,9 @@ import com.chaosjohn.fir_im_update.view.DownLoadDialog;
  */
 public class FirImUpdater {
 
+    public static String providerName = "";
+    public static boolean force = false;
+
     private static Thread download;
     private static Thread thread_update;
 

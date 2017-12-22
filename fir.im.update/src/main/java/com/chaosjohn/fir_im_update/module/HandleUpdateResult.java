@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
 
+import com.chaosjohn.fir_im_update.FirImUpdater;
 import com.chaosjohn.fir_im_update.R;
 import com.chaosjohn.fir_im_update.config.DownloadKey;
 import com.chaosjohn.fir_im_update.utils.GetAppInfo;
@@ -93,8 +94,8 @@ public class HandleUpdateResult implements Runnable {
 //        } else if (!DownloadKey.versionShort.equals(versionShort)) {
             Log.i(TAG, context.getString(R.string.update_available));
             msg.arg1 = 1;
-            if (null != DownloadKey.changelogInfo &&
-                    versionCode < DownloadKey.changelogInfo.threshold)
+            if ((null != DownloadKey.changelogInfo &&
+                    versionCode < DownloadKey.changelogInfo.threshold) || FirImUpdater.force)
                 msg.arg1 = 4;
             up_handler.sendMessage(msg);
         } else {
